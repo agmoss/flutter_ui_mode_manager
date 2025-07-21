@@ -14,7 +14,7 @@ class MyApp extends StatefulWidget {
 }
 
 class _MyAppState extends State<MyApp> {
-  UiMode _uiMode ;
+  UiMode? _uiMode ;
 
   @override
   void initState() {
@@ -24,7 +24,7 @@ class _MyAppState extends State<MyApp> {
 
 
   Future<void> initDeviceUiMode() async {
-    UiMode uiMode;
+    UiMode? uiMode;
     try {
       uiMode = await FlutterUiModeManager.getDeviceUiMode;
     } on PlatformException {
