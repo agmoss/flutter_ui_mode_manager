@@ -13,7 +13,6 @@ import io.flutter.plugin.common.MethodCall
 import io.flutter.plugin.common.MethodChannel
 import io.flutter.plugin.common.MethodChannel.MethodCallHandler
 import io.flutter.plugin.common.MethodChannel.Result
-import io.flutter.plugin.common.PluginRegistry.Registrar
 
 /** FlutterUiModeManagerPlugin */
 public class FlutterUiModeManagerPlugin: FlutterPlugin, MethodCallHandler, ActivityAware {
@@ -24,14 +23,6 @@ public class FlutterUiModeManagerPlugin: FlutterPlugin, MethodCallHandler, Activ
   override fun onAttachedToEngine(@NonNull flutterPluginBinding: FlutterPlugin.FlutterPluginBinding) {
     channel = MethodChannel(flutterPluginBinding.flutterEngine.dartExecutor, "flutter_ui_mode_manager")
     channel.setMethodCallHandler(this)
-  }
-
-  companion object {
-    @JvmStatic
-    fun registerWith(registrar: Registrar) {
-      val channel = MethodChannel(registrar.messenger(), "flutter_ui_mode_manager")
-      channel.setMethodCallHandler(FlutterUiModeManagerPlugin())
-    }
   }
 
   override fun onMethodCall(@NonNull call: MethodCall, @NonNull result: Result) {
@@ -72,8 +63,6 @@ public class FlutterUiModeManagerPlugin: FlutterPlugin, MethodCallHandler, Activ
     }
     return "unknown"
   }
-
-
 
   override fun onAttachedToActivity(binding: ActivityPluginBinding) {
     this.activity = binding.activity
