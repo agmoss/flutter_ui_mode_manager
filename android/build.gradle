@@ -4,6 +4,7 @@ plugins {
 }
 
 android {
+    namespace 'com.hustlance.flutter_ui_mode_manager'
     compileSdkVersion 34
 
     sourceSets {
